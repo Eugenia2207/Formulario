@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Contacto</title>
+    <style>
+        @font-face{
+            font-family: icons;
+            src:url(fontello.woff2);
+        }
+        :root{
+            --purple: #2940c5;
+            --red: red;
+            --fuente: 16px;
+            --gray: #707070;
+            --radius: 3px;
+            --padding: 16px;
+            --fondo: #e7e7e7;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        form{
+            max-width: 30%;
+            margin: 20px auto;
+            background: var(--fondo);
+        }
+        fieldset{
+            border: none;
+        }
+        .whole{
+            padding: 16px 30px;
+            display: grid;
+            grid-template: "l1 i1 i1 i1 i1 i1 i1"
+                           "l2 i2 i2 i2 i2 i2 i2"
+                           "l3 sel sel i3 i3 i3 i3" 
+                           "l4 i4 i4 i4 i4 i4 i4"
+                           ". texta texta texta texta texta texta"
+                           ". . . . . res sub";
+        }
+        label{
+            margin: 16px 0;
+            margin-right: 16px;
+            height: 56px;
+            line-height: 24px;
+            font-family: icons;
+            padding: var(--padding) 0;
+            font-size: var(--fuente);
+            color: var(--gray);
+        }
+        .l1{
+            grid-area: l1;
+        }
+        .i1{
+            position: relative;
+            grid-area: i1;
+            
+        }
+        .l2{
+            grid-area: l2;
+        }
+        .i2{
+            position: relative;
+            grid-area: i2;
+      
+        }
+        .l3{
+            grid-area: l3;
+        }
+        .sel{
+            padding: 5px;
+            grid-area: sel;
+            margin: 16px 0;
+            margin-right: 16px;
+            font-size: var(--fuente);
+            border-radius: var(--radius);
+            border: none;
+            border: 1px solid var(--gray);
+            color: var(--gray);
+            background: var(--fondo);
+            text-align-last: center;
+            cursor: pointer;
+        }
+        .sel:focus{
+            outline: none;
+            border: 1px solid var(--purple);
+            box-shadow: 0 0 2px var(--purple);
+            background: var(--fondo2);
+        }
+        .i3{
+            position: relative;
+            grid-area: i3;
+        }
+        .l4{
+            grid-area: l4;
+        }
+        .i4{
+            position: relative;
+            grid-area: i4;
+        }
+        .i1, .i2, .i3, .i4{
+            margin: 16px 0;
+        }
+        input{
+            height: 56px;
+            padding: var(--padding);
+            font-size: var(--fuente);
+            border-radius: var(--radius);
+            border: none;
+            border: 1px solid var(--gray);
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            background: var(--fondo);
+        }
+        .i1 span, .i2 span, .i3 span, .i4 span{
+            position: absolute;
+            line-height: 24px;
+            top: 16px;
+            left: 16px;
+            color: var(--gray);
+            font-size: var(--fuente);
+            font-family: Arial, Helvetica, sans-serif;
+            pointer-events: none;
+            transition: .3s;
+        }
+        textarea::placeholder{
+            color: var(--gray);
+        }
+        input::placeholder{
+            color:transparent;
+        }
+        input:focus, textarea:focus{
+            outline: none;
+            border: 1px solid var(--purple);
+            box-shadow: 0 0 2px var(--purple);
+        }
+        input:focus + span, input:not(:placeholder-shown) + span{  
+            top: -14px;
+            color: var(--purple);
+            font-size: 12px;
+            background: var(--fondo);
+            padding: 2px;
+        }
+        input:not(:placeholder-shown):invalid{
+            border: 1px solid var(--red);
+            box-shadow: 0 0 2px var(--red);
+        }
+        input:not(:placeholder-shown):valid{
+            border: 1px solid var(--purple);
+            box-shadow: 0 0 2px var(--purple);
+        }
+        textarea{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: var(--fuente);
+            resize: vertical;
+            min-height: 100px;
+            max-height: 300px;
+            grid-area: texta;
+            border: none;
+            border: 1px solid var(--gray);
+            margin: 16px 0;
+            height: 120px;
+            padding: 5px;
+            background: var(--fondo);
+        }
+        button{
+            border-radius: 20px;
+            background: var(--purple);
+            padding: 10px;
+            margin: 8px;
+            font-size: var(--fuente);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+        button:hover{
+            background: #3249cb;
+            transform: scale(1.09);
+        }
+        button:focus{
+            outline: none;
+            background: #152688;
+        }
+        .res{
+            grid-area: res;
+        }
+        .sub{
+            grid-area: sub;
+        }
+        legend{
+            padding: 3vh 2.5vw;
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 2px 5px #00000073;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 1.9vw;
+            font-weight: 900;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+   <form method="post" data-netlify="true">
+    <fieldset>
+        <legend>Contacto</legend>
+    <div class="whole">
+    <label class="l1" for="nom">a</label>
+    <div class="i1">
+        <input type="text" name="nom" placeholder="." pattern="^[A-Z][a-z]*$" minlength="3" required>
+        <span>Nombre</span>
+    </div>
+    <label class="l2" for="dir">b</label>
+    <div class="i2">
+        <input type="text" name="dir" placeholder="." pattern="^[A-Z][a-zA-Z]*(\s[A-Za-z][a-zA-Z]*|){0,4}, \d{2,4}$" required>
+        <span>Dirección</span>
+    </div>
+    <label class="l3" for="tel">d</label>
+    <select class="sel">
+        <option>+598</option>
+        <option>+54</option>
+        <option>+34</option>
+    </select>
+    <div class="i3">
+        <input type="tel" name="tel" placeholder="." pattern="^0\d{2}[ -]?\d{3}[ -]?\d{3}$" required>
+        <span>Télefono</span>
+    </div>
+    <label class="l4" for="email">c</label>
+    <div class="i4">
+        <input type="email" name="email" placeholder="." pattern="[A-Za-z0-9._%+-]+@(gmail|outlook|hotmail)+\.(com)" required>
+        <span>Email</span>
+    </div>
+    <textarea name="mensaje" placeholder="Escriba aquí tu mensaje"></textarea>
+    <button class="res" type="reset">Reset</button>
+    <button class="sub" type="submit">Enviar</button>
+    </div>
+    </fieldset> 
+   </form>
+</body>
+</html>
